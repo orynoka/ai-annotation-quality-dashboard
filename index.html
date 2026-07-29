@@ -62,6 +62,19 @@
 .mini-legend button[aria-pressed="false"] i{filter:grayscale(1)}
 button:disabled,.file-label.disabled{cursor:not-allowed;opacity:.48;transform:none!important;filter:grayscale(.25)}
 @media(max-width:680px){.trend-chart-guide{align-items:flex-start;flex-direction:column}.trend-chart-wrap{padding-top:55px}.trend-help{white-space:normal}.trend-tooltip{min-width:180px}}
+.app-layout{display:grid;grid-template-columns:clamp(190px,17vw,230px) minmax(0,1fr);gap:22px;align-items:start;margin-top:20px}
+.side-nav{position:sticky;top:18px;min-height:calc(100vh - 36px);display:flex;flex-direction:column;padding:22px 14px 16px;border-radius:26px;background:linear-gradient(165deg,#1d1d1f,#27272b);box-shadow:0 18px 48px rgba(20,20,24,.16);color:#fff;z-index:16}
+.side-nav-head{padding:4px 10px 22px;border-bottom:1px solid rgba(255,255,255,.11)}
+.side-nav-head .eyebrow{color:#64b5ff;font-size:10px}.side-nav-head strong{display:block;margin-top:8px;font-size:17px;letter-spacing:-.02em}.side-nav-head small{display:block;margin-top:5px;color:#9b9ba2;font-size:10px;line-height:1.5}
+.side-nav .nav-links{display:flex;flex-direction:column;align-items:stretch;gap:6px;padding:18px 0}
+.side-nav .nav-links a{display:grid;grid-template-columns:28px 1fr;align-items:center;gap:8px;padding:12px 11px;border-radius:14px;color:#bdbdc5;text-decoration:none;font-size:13px;font-weight:800;transition:background .18s,color .18s,transform .18s}
+.side-nav .nav-links a:hover{background:rgba(255,255,255,.08);color:#fff;transform:translateX(2px)}.side-nav .nav-links a.active{background:#fff;color:#1d1d1f;box-shadow:0 8px 22px rgba(0,0,0,.22)}
+.nav-index{font-size:10px;letter-spacing:.08em;color:#707078;font-variant-numeric:tabular-nums}.side-nav .nav-links a.active .nav-index{color:#0071e3}
+.side-nav-foot{margin-top:auto;padding:14px 10px 4px;border-top:1px solid rgba(255,255,255,.11);color:#9b9ba2;font-size:10px;line-height:1.65}.side-nav-foot b{display:flex;align-items:center;gap:7px;color:#e5e5ea;font-size:11px}.side-nav-foot b:before{content:"";width:7px;height:7px;border-radius:50%;background:#34c759;box-shadow:0 0 0 4px rgba(52,199,89,.12)}
+.app-workspace{min-width:0}.workspace-toolbar{position:sticky;top:18px;z-index:15;display:flex;justify-content:flex-end;margin-bottom:20px;padding:10px 12px;border:1px solid rgba(255,255,255,.9);border-radius:20px;background:rgba(255,255,255,.88);backdrop-filter:blur(22px);box-shadow:0 12px 38px rgba(35,47,62,.09)}
+.workspace-toolbar .nav-actions{display:flex;align-items:center;justify-content:flex-end;gap:7px;overflow:auto}.workspace-toolbar .nav-actions button,.workspace-toolbar .nav-actions .file-label{white-space:nowrap;padding:9px 13px;font-size:12px}
+@media(max-width:1100px){.chart-grid-top,.chart-grid-bottom{grid-template-columns:1fr}.chart-grid-bottom .chart-card:last-child{grid-column:auto}.stacked{overflow-x:auto}}
+@media(max-width:760px){.app-layout{display:block;margin-top:14px}.side-nav{position:static;min-height:auto;padding:10px;border-radius:20px}.side-nav-head,.side-nav-foot{display:none}.side-nav .nav-links{flex-direction:row;padding:0;overflow:auto}.side-nav .nav-links a{display:flex;grid-template-columns:none;white-space:nowrap;padding:10px 12px}.nav-index{display:none}.workspace-toolbar{position:static;margin:10px 0 16px}.workspace-toolbar .nav-actions{justify-content:flex-start;width:100%}}
 </style>
 </head>
 <body>
@@ -70,10 +83,14 @@ button:disabled,.file-label.disabled{cursor:not-allowed;opacity:.48;transform:no
     <div><div class="eyebrow">PERFORMANCE × QUALITY</div><h1>把人员表现，变成管理行动。</h1><p>从一次性规则判定，升级为可追踪、可解释、可闭环的个人效质量管理驾驶舱。</p><div class="meta"><span>当前展示 <b id="dateMeta">—</b></span><span>数据源 <b id="sourceMeta">内置样例</b></span><span>服务 <b id="serviceMeta">正在检查</b></span></div></div>
   </header>
 
-  <nav class="app-nav" id="appNav" aria-label="一级导航">
-    <div class="nav-links"><a href="#overview" data-route="overview" class="active">总览</a><a href="#people" data-route="people">人员管理</a><a href="#rules" data-route="rules">评测规则</a><a href="#guide" data-route="guide">看板使用说明书</a></div>
-    <div class="nav-actions"><label class="file-label primary" for="fileInput">上传 CSV</label><input id="fileInput" class="global-file" type="file" accept=".csv,text/csv"><button id="exportBtn">导出筛选结果</button><button id="settingsBtn">AI与同步设置</button></div>
-  </nav>
+  <div class="app-layout">
+  <aside class="side-nav" id="appNav" aria-label="一级导航">
+    <div class="side-nav-head"><div class="eyebrow">MANAGEMENT OS</div><strong>人效质量工作台</strong><small>从团队表现下钻到人员行动</small></div>
+    <nav class="nav-links"><a href="#overview" data-route="overview" class="active"><span class="nav-index">01</span><span>总览</span></a><a href="#people" data-route="people"><span class="nav-index">02</span><span>人员管理</span></a><a href="#rules" data-route="rules"><span class="nav-index">03</span><span>评测规则</span></a><a href="#guide" data-route="guide"><span class="nav-index">04</span><span>使用说明</span></a></nav>
+    <div class="side-nav-foot"><b>14天监控已就绪</b>当前页面共享时间、筛选和人员状态</div>
+  </aside>
+  <div class="app-workspace">
+  <div class="workspace-toolbar"><div class="nav-actions"><label class="file-label primary" for="fileInput">上传 CSV</label><input id="fileInput" class="global-file" type="file" accept=".csv,text/csv"><button id="exportBtn">导出筛选结果</button><button id="settingsBtn">AI与同步设置</button></div></div>
 
   <section id="view-overview" class="view active">
 
@@ -156,6 +173,8 @@ button:disabled,.file-label.disabled{cursor:not-allowed;opacity:.48;transform:no
     <details><summary>常见问题</summary><p>“本地服务未启动”：请双击启动脚本；“DeepSeek连接失败”：检查API Key、网络和模型名称；“飞书需要刷新”：再次检查连接，CLI会自动刷新用户令牌；“暂无趋势”：至少上传两个不同日期的数据。</p></details>
   </section>
   </section>
+  </div>
+  </div>
 </main>
 <div id="personMask" class="drawer-mask"><aside class="drawer person-drawer" aria-label="人员详情"><div class="drawer-head"><div><h2>人员详情与跟进</h2><div class="connection">指标来自当前共享数据，跟进记录保存在本机浏览器</div></div><button id="closePerson" class="close">×</button></div><div id="personContent"></div><section class="setting-card"><h3>跟进闭环</h3><label>当前状态</label><select id="followupStatus"><option value="未跟进">未跟进</option><option value="跟进中">跟进中</option><option value="已恢复">已恢复</option></select><label>跟进备注</label><textarea id="followupNote" placeholder="例如：已安排复训，明日增加20%抽检"></textarea><div class="setting-actions"><button id="saveFollowup" class="primary">保存跟进记录</button></div></section></aside></div>
 <script src="data/offline-history.js"></script>
