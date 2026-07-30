@@ -4,7 +4,9 @@
 
 ## 在线体验
 
-https://orynoka.github.io/ai-annotation-quality-dashboard/
+### [🚀 打开线上人效质量看板 →](https://orynoka.github.io/ai-annotation-quality-dashboard/)
+
+无需安装或登录，打开后即可查看 14 天趋势、人员表现、评测规则和管理建议。
 
 ![看板预览](assets/dashboard-preview.png)
 
@@ -42,4 +44,3 @@ GitHub Pages 版本为静态作品集演示，支持数据查看、筛选、交�
 - 仓库不包含 API Key、Token、App Secret 或本机配置。
 - 不要将真实生产数据直接提交到公开仓库。
 - 线上上传的 CSV 仅在当前浏览器页面中处理，不会写回本仓库。
-
